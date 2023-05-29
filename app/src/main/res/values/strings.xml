@@ -8,4 +8,6 @@
     <string name="profile">Profile</string>
     <string name="logo">logo</string>
     <string name="logout">Logout</string>
+    <string name="back">back</string>
+    <string name="photo">photo</string>
 </resources>

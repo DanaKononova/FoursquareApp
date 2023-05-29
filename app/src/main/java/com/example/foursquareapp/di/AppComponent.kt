@@ -5,6 +5,7 @@ import com.example.foursquareapp.di.modules.*
 import com.example.foursquareapp.ui.history.HistoryFragment
 import com.example.foursquareapp.ui.lauch.LaunchFragment
 import com.example.foursquareapp.ui.nearby.NearbyFragment
+import com.example.foursquareapp.ui.nearby.PlaceFragment
 import com.example.foursquareapp.ui.profile.ProfileFragment
 import dagger.BindsInstance
 import dagger.Component
@@ -28,5 +29,7 @@ interface AppComponent {
     fun inject(fragment: HistoryFragment)
 
     fun inject(fragment: ProfileFragment)
+
+    fun inject(fragment: PlaceFragment)
 
 }

@@ -8,6 +8,7 @@ import javax.inject.Singleton
 
 @Module
 class SourceModule {
+
     @Provides
     @Singleton
     fun providePrefs(context: Context): SharedPreferences {
@@ -17,4 +18,5 @@ class SourceModule {
     companion object {
         private const val PREFS_KEY = "prefs_key"
     }
+
 }

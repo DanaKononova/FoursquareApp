@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import com.example.foursquareapp.FoursquareApp
 import com.example.foursquareapp.databinding.FragmentProfileBinding
 import com.example.foursquareapp.di.ViewModelFactory
-import com.example.foursquareapp.ui.nearby.NearbyViewModel
 import javax.inject.Inject
 
 class ProfileFragment : Fragment() {
