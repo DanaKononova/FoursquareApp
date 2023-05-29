@@ -1,5 +1,6 @@
 package com.example.foursquareapp
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -10,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.foursquareapp.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,5 +43,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         navView.setupWithNavController(navController)
+
+        val colorStateList = ColorStateList(
+            arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf()), intArrayOf(
+                ContextCompat.getColor(this, R.color.app_bar),
+                ContextCompat.getColor(this, R.color.gray)
+            )
+        )
+        navView.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
+        navView.itemIconTintList = colorStateList
+        navView.itemTextColor = colorStateList
     }
 }
