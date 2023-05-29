@@ -13,7 +13,16 @@
         <action
             android:id="@+id/action_navigation_launch_to_navigation_search"
             app:destination="@id/navigation_search" />
+        <action
+            android:id="@+id/action_navigation_launch_to_navigation_authorization"
+            app:destination="@id/navigation_authorization" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_authorization"
+        android:name="com.example.foursquareapp.ui.authorization.AuthorizationFragment"
+        android:label="authorization"
+        tools:layout="@layout/fragment_authorization" />
 
     <fragment
         android:id="@+id/navigation_search"
