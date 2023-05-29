@@ -2,6 +2,7 @@ package com.example.foursquareapp.di
 
 import android.content.Context
 import com.example.foursquareapp.di.modules.*
+import com.example.foursquareapp.ui.authorization.AuthorizationFragment
 import com.example.foursquareapp.ui.history.HistoryFragment
 import com.example.foursquareapp.ui.lauch.LaunchFragment
 import com.example.foursquareapp.ui.nearby.NearbyFragment
@@ -31,5 +32,7 @@ interface AppComponent {
     fun inject(fragment: ProfileFragment)
 
     fun inject(fragment: PlaceFragment)
+
+    fun inject(fragment: AuthorizationFragment)
 
 }
