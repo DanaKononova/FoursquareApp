@@ -9,19 +9,41 @@
         android:id="@+id/navigation_launch"
         android:name="com.example.foursquareapp.ui.lauch.LaunchFragment"
         android:label="Launch"
-        tools:layout="@layout/fragment_launch" />
+        tools:layout="@layout/fragment_launch">
+        <action
+            android:id="@+id/action_navigation_launch_to_navigation_search"
+            app:destination="@id/navigation_search" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.example.foursquareapp.ui.nearby.NearbyFragment"
         android:label="@string/nearby"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_nearby">
+        <action
+            android:id="@+id/action_navigation_search_to_navigation_place"
+            app:destination="@id/navigation_place" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_place"
+        android:name="com.example.foursquareapp.ui.nearby.PlaceFragment"
+        android:label="Place"
+        tools:layout="@layout/fragment_place">
+        <argument
+            android:name="id"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_navigation_place_to_navigation_search"
+            app:destination="@id/navigation_search" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_history"
         android:name="com.example.foursquareapp.ui.history.HistoryFragment"
         android:label="@string/history"
-        tools:layout="@layout/fragment_nearby" />
+        tools:layout="@layout/fragment_history" />
 
     <fragment
         android:id="@+id/navigation_profile"
