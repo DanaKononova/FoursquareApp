@@ -4,7 +4,7 @@ import com.example.foursquareapp.data.mapper.DescriptionMapper
 import com.example.foursquareapp.data.mapper.PhotoMapper
 import com.example.foursquareapp.data.mapper.PlaceMapper
 import com.example.foursquareapp.data.network.FoursquareService
-import com.example.foursquareapp.data.source.PreferencesSource
+import com.example.foursquareapp.data.source.PlacesDataBaseSource
 import com.example.foursquareapp.domain.Repository
 import com.example.foursquareapp.domain.models.DescriptionData
 import com.example.foursquareapp.domain.models.PhotoData
@@ -18,13 +18,28 @@ class RepositoryImpl @Inject constructor(
     private val placeMapper: PlaceMapper,
     private val photoMapper: PhotoMapper,
     private val descriptionMapper: DescriptionMapper,
-    private val prefSource: PreferencesSource,
+    private val dataBaseSource: PlacesDataBaseSource,
 ) : Repository {
 
     override suspend fun getPlaces(ll: String, radius: Int, limit: Int): List<PlaceData> {
         return withContext(Dispatchers.IO) {
-            val response1 = service.getPlaces(ll, radius, limit).results
-            (response1 ?: listOf()).map { placeMapper(it) }
+            val response = service.getPlaces(ll, radius, limit).results
+            val entity = (response ?: listOf()).map { placeMapper.toPlacesEntity(it) }
+            dataBaseSource.insertAllPlaces(entity)
+            (entity).map { placeMapper(it) }
+        }
+    }
+
+    override suspend fun getPlacesFromDb(): List<PlaceData> {
+        return withContext(Dispatchers.IO) {
+            val entity = dataBaseSource.getAllPlaces()
+            (entity).map { placeMapper(it) }
+        }
+    }
+
+    override suspend fun deletePlacesFromDb() {
+        withContext(Dispatchers.IO) {
+            dataBaseSource.deleteAllPlaces(dataBaseSource.getAllPlaces())
         }
     }
 
