@@ -55,7 +55,7 @@ class NearbyFragment : Fragment() {
             adapter.setPlaces(it)
         }
 
-        viewModel.getPlaces("53.9057644,27.5582305", 4000, 30)
+        viewModel.getPlaces("53.9057644,27.5582305", 4000, 30, requireContext())
     }
 
     override fun onDestroyView() {
